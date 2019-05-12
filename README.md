@@ -108,3 +108,29 @@ We apply the pipeline to a test image. This is the final result.
 
 ## The Video
 The pipeline is applied to a video. Click on the image to watch the video or click [here](https://youtu.be/RIZyNokDw9o). You will be redirected to YouTube.[![IMAGE ALT TEXT HERE](./output_images/YouTube.png)](https://youtu.be/RIZyNokDw9o)
+
+
+# Discussion
+## Issues and Challenges
+---
+### Bad frames:
+There will be some frames where no lanes will be detected or the lanes might not make sense. We determine the bad frames if any of the following conditions are met:
+
+1. No pixels were detected using the sliding window search or search around the previously detected line.
+2. The average gap between the lanes is less than 0.7 times pr greater than 1.3 times the globally maintained moving average of the lane gap.
+
+Actions:
+
+1. Perform a sliding window search again (this is done in the detect_lines function)
+2. If this still results in a bad frame then we fall back to the previous well detected frame.
+
+### Smoothing by Averaging lanes:
+The lane for each frame is a simple average of 12 previously computed lanes. This is done in the get_averaged_line method in the code block below.
+
+
+## Points of failure & Areas of Improvement
+The pipeline seems to fail for the harder challenge video. This video has sharper turns and at very short intervals.
+Future improvement:
+1. Choose a smaller section to take the transform since this video has sharper turns and the lenght of a lane is shorter than the previous videos.
+2. Make it more robust. Fist is a better binary mask calculation. Second, is a better mask calculation approach. But I do not think these manual crafting approaches are the best. I think that instead of trying to figure out the best set of hyperparameters by hand, it is better to let the computer figure it out automatically. 
+
