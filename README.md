@@ -63,7 +63,7 @@ As we can see the lanes lines in the challenge and harder challenge videos were 
 
 ![Lanes Image](./output_images/Threshold.png)
 
-An in-depth explanation about how these functions work can be found at the Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree.
+An in-depth explanation about how these functions work can be found at the [Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree](https://classroom.udacity.com/nanodegrees/nd013/parts/fbf77062-5703-404e-b60c-95b78b2f3f9e/modules/2b62a1c3-e151-4a0e-b6b6-e424fa46ceab/lessons/096009a1-3d76-4290-92f3-055961019d5e/concepts/016c6236-7f8c-4c07-8232-a3d099c5454a).
 
 ## Step 4: Apply a perspective transform to rectify binary image ("birds-eye view").
 
@@ -94,7 +94,7 @@ The radius of curvature is computed according to the formula and method describe
 
 The mean of the lane pixels closest to the car gives us the center of the lane. The center of the image gives us the position of the car. The difference between the 2 is the offset from the center.
 
-For further information, please refer to Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree.
+For further information, please refer to [Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree](https://classroom.udacity.com/nanodegrees/nd013/parts/fbf77062-5703-404e-b60c-95b78b2f3f9e/modules/2b62a1c3-e151-4a0e-b6b6-e424fa46ceab/lessons/096009a1-3d76-4290-92f3-055961019d5e/concepts/016c6236-7f8c-4c07-8232-a3d099c5454a).
 
 ## Step 7. Warp the detected lane boundaries back onto the original image.
 Inverse Transform : Paint the lane area Perform an inverse perspective transform Combine the precessed image with the original image.
