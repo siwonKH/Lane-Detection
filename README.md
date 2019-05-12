@@ -112,7 +112,6 @@ The pipeline is applied to a video. Click on the image to watch the video or cli
 
 # Discussion
 ## Issues and Challenges
----
 ### Bad frames:
 There will be some frames where no lanes will be detected or the lanes might not make sense. We determine the bad frames if any of the following conditions are met:
 
