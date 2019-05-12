@@ -5,12 +5,11 @@
 # Overview
 In this project, I will write a software pipeline to identify the lane boundaries in a video from a front-facing camera on a car. The camera calibration images, test road images, and project videos are available in the project repository.
 
-The complete pipeline can be found [here](./blob/master/advanced_land_finding.ipynb).
+The complete pipeline can be found [here](./advanced_land_finding.ipynb).
 
 
 
 # The Project
----
 
 The goals / steps of this project are the following:
 
@@ -27,10 +26,11 @@ The goals / steps of this project are the following:
 It is not good to reinvent the wheel every time. That's why I have chosen to use some well known libraries:
 
 
-OpenCV - an open source computer vision library,
-Matplotbib - a python 2D plotting libray,
-Numpy - a package for scientific computing with Python,
-MoviePy - a Python module for video editing.
+* OpenCV - an open source computer vision library,
+* Matplotbib - a python 2D plotting libray,
+* Numpy - a package for scientific computing with Python,
+* MoviePy - a Python module for video editing.
+
 The complete code for this step can be found in the first code cell of this Jupyter notebook.
 
 ## Step 1: Compute the camera calibration using chessboard images
@@ -39,6 +39,10 @@ The next step is to perform a camera calibration. A set of chessboard images wil
 I have defined the calibrate_camera function which takes as input parameters an array of paths to chessboards images, and the number of inside corners in the x and y axis.
 
 For each image path, calibrate_camera:
+![Lanes Image](./output_images/camera_cal.png)
+![Lanes Image](./output_images/camera_cal_2.png)
+![Lanes Image](./output_images/camera_cal_3.png)
+![Lanes Image](./output_images/camera_cal_4.png)
 
 reads the image by using the OpenCV cv2.imread function,
 converts it to grayscale usign cv2.cvtColor,
@@ -53,8 +57,8 @@ The complete code for this step can be found in the second code cell of this Jup
 Another OpenCv funtion, cv2.undistort, will be used to undistort images.
 
 Below, it can be observed the result of undistorting one of the chessboard images:
-![Lanes Image](./output_images/camera_cal.png)
 
+![Lanes Image](./output_images/camera_cal_res.png)
 
 The images for camera calibration are stored in the folder called `camera_cal`.  The images in `test_images` are for testing your pipeline on single frames.  If you want to extract more test images from the videos, you can simply use an image writing method like `cv2.imwrite()`, i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.  
 
