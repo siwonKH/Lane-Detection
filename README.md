@@ -5,9 +5,7 @@
 # Overview
 In this project, I will write a software pipeline to identify the lane boundaries in a video from a front-facing camera on a car. The camera calibration images, test road images, and project videos are available in the project repository.
 
-The complete pipeline can be found [here](./advanced_land_finding.ipynb).
-
-
+The steps of this project are listed below. You can have a look at [Advanced_Lane_Lines.ipynb](./blob/master/advanced_land_finding.ipynb) for the code.
 
 # The Project
 
