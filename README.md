@@ -31,9 +31,9 @@ The goals / steps of this project are the following:
 ## Step 1: Compute the camera calibration using chessboard images
 The next step is to perform a camera calibration. A set of chessboard images will be used for this purpose.
 
-The camera_calibration function takes as input parameters an array of paths to chessboards images, and the number of inside corners in the x and y axis.
+The camera_calibration() function takes as input parameters an array of paths to chessboards images, and the number of inside corners in the x and y axis.
 
-For each image path, calibrate_camera:
+For each image path, calibrate camera:
 ![Lanes Image](./output_images/camera_cal.png)
 ![Lanes Image](./output_images/camera_cal_2.png)
 ![Lanes Image](./output_images/camera_cal_3.png)
@@ -57,7 +57,7 @@ Below, it can be observed the result of undistorting one of the chessboard image
 Different color space configurations of challenging frames
 ![Lanes Image](./output_images/RGB_HLS.png)
  
-As we can see the lanes lines in the challenge and harder challenge videos were extremely difficult to detect. They were either too bright or too dull. So the get_thresholded_image functionThis use R & G channel thresholding and L channel thresholding
+As we can see the lanes lines in the challenge and harder challenge videos were extremely difficult to detect. They were either too bright or too dull. So the get_thresholded_image() functionThis use R & G channel thresholding and L channel thresholding
 
 ![Lanes Image](./output_images/Threshold.png)
 
