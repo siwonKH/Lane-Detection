@@ -56,6 +56,25 @@ Below, it can be observed the result of undistorting one of the chessboard image
 ![Lanes Image](./output_images/camera_cal_res.png)
 
 ## Step 3: Use color transforms, gradients, etc., to create a thresholded binary image.
-In this step, we will define the following funtions to calculate several gradient measurements (x, y, magnitude, direction and color).
+Different color space configurations of challenging frames
+![Lanes Image](./output_images/RGB_HLS.png)
+ 
+As we can see the lanes lines in the challenge and harder challenge videos were extremely difficult to detect. They were either too bright or too dull. So the get_thresholded_image functionThis use R & G channel thresholding and L channel thresholding
 
+![Lanes Image](./output_images/Threshold.png)
+
+An in-depth explanation about how these functions work can be found at the Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree.
+
+## Step 4: Apply a perspective transform to rectify binary image ("birds-eye view").
+The next step in our pipeline is to transform our sample image to birds-eye view.
+
+The process to do that is quite simple:
+
+First, you need to select the coordinates corresponding to a trapezoid in the image, but which would look like a rectangle from birds_eye view.
+Then, you have to define the destination coordinates, or how that trapezoid would look from birds_eye view.
+Finally, Opencv function cv2.getPerspectiveTransform will be used to calculate both, the perpective transform M and the inverse perpective transform _Minv.
+M and Minv will be used respectively to warp and unwarp the video images.
+Please find below the result of warping an image after transforming its perpective to birds-eye view: 
+
+![Lanes Image](./output_images/warped.png)
 
