@@ -97,11 +97,13 @@ The mean of the lane pixels closest to the car gives us the center of the lane. 
 For further information, please refer to Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree.
 
 ## Step 7. Warp the detected lane boundaries back onto the original image.
-Inverse Transform
-In this block of code we:
+Inverse Transform : Paint the lane area Perform an inverse perspective transform Combine the precessed image with the original image.
+nwarp.png
 
-Paint the lane area Perform an inverse perspective transform Combine the precessed image with the original image.
+![Lanes Image](./output_images/unwarp.png)
+
 
 ## Step 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+We apply the pipeline to a test image. This is the final result.
 
 ![Lanes Image](./output_images/Lane_detected_with_metrics.png)
