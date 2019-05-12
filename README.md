@@ -66,15 +66,42 @@ As we can see the lanes lines in the challenge and harder challenge videos were 
 An in-depth explanation about how these functions work can be found at the Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree.
 
 ## Step 4: Apply a perspective transform to rectify binary image ("birds-eye view").
-The next step in our pipeline is to transform our sample image to birds-eye view.
 
-The process to do that is quite simple:
-
-First, you need to select the coordinates corresponding to a trapezoid in the image, but which would look like a rectangle from birds_eye view.
-Then, you have to define the destination coordinates, or how that trapezoid would look from birds_eye view.
-Finally, Opencv function cv2.getPerspectiveTransform will be used to calculate both, the perpective transform M and the inverse perpective transform _Minv.
-M and Minv will be used respectively to warp and unwarp the video images.
-Please find below the result of warping an image after transforming its perpective to birds-eye view: 
+After manually examining a sample image, I extracted the vertices to perform a perspective transform. The polygon with these vertices is drawn on the image for visualization. Destination points are chosen such that straight lanes appear more or less parallel in the transformed image. Opencv function cv2.getPerspectiveTransform will be used to calculate both, the perpective transform M and the inverse perpective transform Minv. M and Minv will be used respectively to warp and unwarp the video images.
 
 ![Lanes Image](./output_images/warped.png)
 
+## Step 5: Detect lane pixels and fit to find the lane boundary.
+
+* Use histogram of the lower half of the warped image. 
+
+![Lanes Image](./output_images/histogram.png)
+
+* Then, the starting left and right lanes positions are selected by looking to the max value of the histogram to the left and the right of the histogram's mid position.
+* A technique known as Sliding Window is used to identify the most likely coordinates of the lane lines in a window, which slides vertically through the image for both the left and right line.
+* Finally, usign the coordinates previously calculated, a second order polynomial is calculated for both the left and right lane line. Numpy's function np.polyfit will be used to calculate the polynomials.
+Please find below the result of applying the detect_lines() function to the warped image: 
+
+![Lanes Image](./output_images/sliding_window.png)
+
+Once you have selected the lines, it is reasonable to assume that the lines will remain there in future video frames. detect_similar_lines() uses the previosly calculated line_fits to try to identify the lane lines in a consecutive image. If it fails to calculate it, it invokes detect_lines() function to perform a full search.
+
+![Lanes Image](./output_images/similar_line.png)
+
+## Step 6: Determine the curvature of the lane and vehicle position with respect to center.
+
+The radius of curvature is computed according to the formula and method described in the classroom material. Since we perform the polynomial fit in pixels and whereas the curvature has to be calculated in real world meters, we have to use a pixel to meter transformation and recompute the fit again.
+
+The mean of the lane pixels closest to the car gives us the center of the lane. The center of the image gives us the position of the car. The difference between the 2 is the offset from the center.
+
+For further information, please refer to Lesson 15: Advanced Techniques for Lane Finding of Udacity's Self Driving Car Engineer Nanodegree.
+
+## Step 7. Warp the detected lane boundaries back onto the original image.
+Inverse Transform
+In this block of code we:
+
+Paint the lane area Perform an inverse perspective transform Combine the precessed image with the original image.
+
+## Step 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+
+![Lanes Image](./output_images/Lane_detected_with_metrics.png)
