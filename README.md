@@ -55,3 +55,7 @@ Below, it can be observed the result of undistorting one of the chessboard image
 
 ![Lanes Image](./output_images/camera_cal_res.png)
 
+## Step 3: Use color transforms, gradients, etc., to create a thresholded binary image.
+In this step, we will define the following funtions to calculate several gradient measurements (x, y, magnitude, direction and color).
+
+
