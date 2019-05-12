@@ -105,3 +105,6 @@ nwarp.png
 We apply the pipeline to a test image. This is the final result.
 
 ![Lanes Image](./output_images/Lane_detected_with_metrics.png)
+
+## The Video
+The pipeline is applied to a video. Click on the image to watch the video or click [here](https://youtu.be/RIZyNokDw9o). You will be redirected to YouTube.[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://youtu.be/RIZyNokDw9o)
