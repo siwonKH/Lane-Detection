@@ -1,18 +1,15 @@
-## Advanced Lane Finding
+# Advanced Lane Finding
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 ![Lanes Image](./examples/example_output.jpg)
 
-In this project, your goal is to write a software pipeline to identify the lane boundaries in a video, but the main output or product we want you to create is a detailed writeup of the project.  Check out the [writeup template](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup.  
+# Overview
+In this project, I will write a software pipeline to identify the lane boundaries in a video from a front-facing camera on a car. The camera calibration images, test road images, and project videos are available in the project repository.
 
-Creating a great writeup:
----
-A great writeup should include the rubric points as well as your description of how you addressed each point.  You should include a detailed description of the code used in each step (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
+The complete pipeline can be found [here](./blob/master/advanced_land_finding.ipynb).
 
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
 
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
 
-The Project
+# The Project
 ---
 
 The goals / steps of this project are the following:
@@ -25,6 +22,39 @@ The goals / steps of this project are the following:
 * Determine the curvature of the lane and vehicle position with respect to center.
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+
+## Step 0: Import and initialize the packages needed in the project
+It is not good to reinvent the wheel every time. That's why I have chosen to use some well known libraries:
+
+
+OpenCV - an open source computer vision library,
+Matplotbib - a python 2D plotting libray,
+Numpy - a package for scientific computing with Python,
+MoviePy - a Python module for video editing.
+The complete code for this step can be found in the first code cell of this Jupyter notebook.
+
+## Step 1: Compute the camera calibration using chessboard images
+The next step is to perform a camera calibration. A set of chessboard images will be used for this purpose.
+
+I have defined the calibrate_camera function which takes as input parameters an array of paths to chessboards images, and the number of inside corners in the x and y axis.
+
+For each image path, calibrate_camera:
+
+reads the image by using the OpenCV cv2.imread function,
+converts it to grayscale usign cv2.cvtColor,
+find the chessboard corners usign cv2.findChessboardCorners
+Finally, the function uses all the chessboard corners to calibrate the camera by invoking cv2.calibrateCamera.
+
+The values returned by cv2.calibrateCamera will be used later to undistort our video images.
+
+The complete code for this step can be found in the second code cell of this Jupyter notebook.
+
+## Step 2: Apply a distortion correction to raw images
+Another OpenCv funtion, cv2.undistort, will be used to undistort images.
+
+Below, it can be observed the result of undistorting one of the chessboard images:
+![Lanes Image](./output_images/camera_cal.png)
+
 
 The images for camera calibration are stored in the folder called `camera_cal`.  The images in `test_images` are for testing your pipeline on single frames.  If you want to extract more test images from the videos, you can simply use an image writing method like `cv2.imwrite()`, i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.  
 
